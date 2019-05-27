@@ -52,11 +52,12 @@ public class RepositorioDeMedalhas {
     }
     
     
-    
-    public void atualizar (Medalha med){
+    public void atualizar (Medalha medantiga, Medalha mednova){
         
         if (!this.medalha.contains(med)){
-            
+            this.medalha.set
+                 
+                
             
             
         }
