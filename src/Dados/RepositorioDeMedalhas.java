@@ -3,6 +3,9 @@ package Dados;
 import Negocios.Beans.Medalha;
 import com.sun.javafx.UnmodifiableArrayList;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class RepositorioDeMedalhas {
 
@@ -41,15 +44,13 @@ public class RepositorioDeMedalhas {
         }
         
     }
-    /*
-    public ArrayList Listar(){
+    
+    public List Listar(){
         
         
-        
-        
-        return medalha;
+        return Collections.unmodifiableList(medalha);
     }
-    */
+    
     
     
     public void atualizar (Medalha med){

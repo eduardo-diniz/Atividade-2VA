@@ -8,6 +8,11 @@ private Modalidade modalidade;
 private Pais pais;
 private TipoDeMedalhas tipoDeMedalhas;
 
+    public Modalidade getModalidade() {
+        return modalidade;
+    }
+
+
 
 
     @Override
@@ -17,7 +22,7 @@ private TipoDeMedalhas tipoDeMedalhas;
         
         if (obj instanceof Medalha) {
             Medalha m = (Medalha) obj;
-            if (this.modalidade.equals(m.modalidade.getNomeModalidade())){
+            if (this.modalidade.equals(m.getModalidade())){
                 
                 resultado = true;
             }
