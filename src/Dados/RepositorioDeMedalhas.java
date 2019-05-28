@@ -51,14 +51,14 @@ public class RepositorioDeMedalhas {
         return Collections.unmodifiableList(medalha);
     }
 
-    public void atualizar(Medalha medNova) {
+    public void atualizar(Medalha medNova) throws ElementoJaExisteException {
 
         if (this.medalha.contains(medNova)) {
             int indice = this.medalha.indexOf(medNova);
             this.medalha.set(indice, medNova);
         } else {
 
-            //exceção throw new ElementoNaoExisteException
+            throw new ElementoJaExisteException(medNova);
         }
 
     }

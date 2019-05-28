@@ -24,7 +24,7 @@ public class Fachada {
 
 private Fachada(){
     
-    this.meda = new Controlador(RepositorioDeMedalhas.getinstance());
+    this.meda = new Controlador();
     
 }
 

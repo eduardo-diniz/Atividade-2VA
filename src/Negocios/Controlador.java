@@ -2,27 +2,41 @@ package Negocios;
 
 import Dados.RepositorioDeMedalhas;
 import Exception.ElementoJaExisteException;
+import Exception.ElementoNaoExisteException;
 import Negocios.Beans.Medalha;
+import java.util.Collections;
+import java.util.List;
 
-
-//Esboço do controlador
 public class Controlador {
-
-    private  RepositorioDeMedalhas repositorioMedalhas;
     
+    private RepositorioDeMedalhas repositorioMedalhas;
     
-    
-    public Controlador(RepositorioDeMedalhas r){
+    public Controlador() {
         
-        this.repositorioMedalhas = r;
-        
+        this.repositorioMedalhas = RepositorioDeMedalhas.getinstance();
         
     }
-    public void inserir(Medalha med) throws  ElementoJaExisteException{
+
+    public void inserir(Medalha med) throws ElementoJaExisteException {
+        
+        repositorioMedalhas.getinstance().inserir(med);
+    }
     
-    RepositorioDeMedalhas.getinstance().inserir(med);
-}
+    public List Listar() {
+        
+        return repositorioMedalhas.getinstance().Listar();
+        
+    }
     
+    public void atualizar(Medalha medNova) throws ElementoJaExisteException {
+        
+        repositorioMedalhas.getinstance().atualizar(medNova);
+    }
     
+    public void remover(Medalha medalhaRem) throws ElementoNaoExisteException {
+        
+        repositorioMedalhas.remover(medalhaRem);
+        
+    }
     
 }
