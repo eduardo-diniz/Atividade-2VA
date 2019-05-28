@@ -23,7 +23,7 @@ public enum Modalidade {
     public String getNomeModalidade() {
         return nomeModalidade;
     }
-
+/*
     @Override
     public boolean equals(Object obj){
 
@@ -41,5 +41,5 @@ public enum Modalidade {
         return resultado;
 
     }
-
+*/
 }

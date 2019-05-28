@@ -1,32 +1,28 @@
 package Negocios;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import Dados.RepositorioDeMedalhas;
+import Exception.ElementoJaExisteException;
+import Negocios.Beans.Medalha;
 
-public class Controlador{
-    
-    /* ordenação de pais
-    public int compareTo (Pais p){
-        int resulta = 0;
-        if (this.mediaGeral <p.)
-        result -1;
-    }else if (this.mediageral =={
-    
-    result 1
+
+//Esboço do controlador
+public class Controlador {
+
+    private  RepositorioDeMedalhas repositorioMedalhas;
     
     
+    
+    public Controlador(RepositorioDeMedalhas r){
+        
+        this.repositorioMedalhas = r;
+        
+        
     }
-    //Collections.sort()
-    */
-    //compareTo.String
-
-
-//comparar outro implements comparator <Modalidade>
-        
-        
-        public int compare (Modalidade 1, Modalidade 2){
-            
-            
-            return o1.getmodalidade().compareTo(Modalidade2.getModalidade)
-        }
-
+    public void inserir(Medalha med) throws  ElementoJaExisteException{
+    
+    RepositorioDeMedalhas.getinstance().inserir(med);
+}
+    
+    
+    
 }

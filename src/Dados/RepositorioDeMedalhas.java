@@ -1,5 +1,6 @@
 package Dados;
 
+import Exception.ElementoJaExisteException;
 import Exception.ElementoNaoExisteException;
 import Negocios.Beans.Medalha;
 import com.sun.javafx.UnmodifiableArrayList;
@@ -25,25 +26,25 @@ public class RepositorioDeMedalhas {
         if (instance == null) {
             RepositorioDeMedalhas.instance = new RepositorioDeMedalhas();
 
-        } else {
-
-        }
+        } 
         return instance;
 
     }
+    
+    
 
-    //Falta implementar o metodo equals na classe medalha
-    public void inserir(Medalha med) {
-        if (!this.medalha.contains(med)) {
-            if (!this.medalha.equals(med)) {
-                medalha.add(med);
-            } else {
-                //Exceção
-
-            }
+    public void inserir(Medalha med) throws  ElementoJaExisteException {
+        if (med != null && !this.medalha.contains(med)) {
+            
+            throw new ElementoJaExisteException(med);
+            
+        } else {
+            
+            medalha.add(med);
+        }
 
         }
-    }
+ 
 
     public List Listar() {
 
@@ -64,7 +65,7 @@ public class RepositorioDeMedalhas {
 
     public void remover(Medalha medalhaRem) throws ElementoNaoExisteException {
 
-        if (this.medalha.contains(medalhaRem)) {
+        if  (this.medalha.contains(medalhaRem)) {
             this.medalha.remove(medalhaRem);
 
         } else {

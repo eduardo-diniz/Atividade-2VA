@@ -1,4 +1,4 @@
-package Negocio.Beans;
+package Negocios.Beans;
 
 public enum Pais {
 

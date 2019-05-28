@@ -11,17 +11,14 @@ import Negocios.Beans.*;
  *
  * @author Eduardo
  */
-public class ElementoNaoExisteException extends Exception{
-    
+public class ElementoNaoExisteException extends Exception {
+
     private Medalha medalhaQualquer;
-    
- 
-    
-    public ElementoNaoExisteException (Medalha m){
-        super ("Elemento não existe");
+
+    public ElementoNaoExisteException(Medalha m) {
+        super("Elemento não existe");
         this.medalhaQualquer = m;
-        
-        
+
     }
 
     public Medalha getMedalhaQualquer() {
@@ -31,5 +28,5 @@ public class ElementoNaoExisteException extends Exception{
     public void setMedalhaQualquer(Medalha medalhaQualquer) {
         this.medalhaQualquer = medalhaQualquer;
     }
-    
+
 }
