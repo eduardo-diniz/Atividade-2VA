@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Negocios;
+package GUI;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -29,7 +30,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         try {
-            GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("/GUI/Tela.fxml"));
+            Pane root =  FXMLLoader.load(getClass().getResource("Tela.fxml"));
             Scene scene = new Scene(root, 400, 400);
             primaryStage.setScene(scene);
             primaryStage.show();

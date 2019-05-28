@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="354.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="GUI.ControladorTela">
@@ -26,14 +27,26 @@
             <Button layoutX="102.0" layoutY="108.0" mnemonicParsing="false" text="Remover" />
             <Button layoutX="177.0" layoutY="108.0" mnemonicParsing="false" text="Atualizar" />
             <Button layoutX="248.0" layoutY="108.0" mnemonicParsing="false" text="PAIS " />
-            <Button fx:id="btnAdd" layoutX="20.0" layoutY="108.0" mnemonicParsing="false" onAction="#addMed" text="Adicionar" />
+            <Button fx:id="btnAdd" layoutX="20.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Adicionar" />
             <Button layoutX="300.0" layoutY="108.0" mnemonicParsing="false" text="Lista" />
-            <ChoiceBox layoutX="134.0" layoutY="13.0" prefWidth="150.0" />
-            <ChoiceBox layoutX="133.0" layoutY="44.0" prefWidth="150.0" />
-            <ChoiceBox layoutX="133.0" layoutY="76.0" prefWidth="150.0" />
-            <Text layoutX="43.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" wrappingWidth="40.0" />
-            <Text layoutX="31.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modalidade" wrappingWidth="66.66666666666669" />
-            <Text layoutX="42.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pais" wrappingWidth="39.99999999999994" />
+            <ChoiceBox fx:id="boxTipo" layoutX="134.0" layoutY="13.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="boxMod" layoutX="133.0" layoutY="44.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="boxPais" layoutX="133.0" layoutY="76.0" prefWidth="150.0" />
+            <Text layoutX="43.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" wrappingWidth="40.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="31.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modalidade" wrappingWidth="78.66666666666669">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="42.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pais" wrappingWidth="39.99999999999994">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <TableView fx:id="tblClass" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
