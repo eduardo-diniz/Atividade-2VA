@@ -39,4 +39,8 @@ public class Controlador {
         
     }
     
+     public String toString(Medalha medalha) {
+        return toString();
+    }
+    
 }

@@ -8,6 +8,7 @@ import Negocios.Beans.Pais;
 import Negocios.Beans.TipoDeMedalhas;
 import Negocios.Controlador;
 import Negocios.Fachada;
+import com.sun.javafx.collections.ImmutableObservableList;
 import java.util.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,7 +32,7 @@ public class ControladorTela implements EventHandler<Event> {
 
     }
 
-    Fachada f = Fachada.getinstance();
+    Controlador c = new Controlador();
 
     @FXML
     private TableView<Medalha> tblClass;
@@ -50,30 +51,39 @@ public class ControladorTela implements EventHandler<Event> {
     public ObservableList<Medalha> getMedalha() {
 
         m.addAll(RepositorioDeMedalhas.getinstance().Listar());
-        
+
         return m;
-        
+
     }
 
     public void initialize() {
 
-        tblClass.setItems(getMedalha());
         boxTipo.getItems().addAll(TipoDeMedalhas.values());
         boxMod.getItems().addAll(Modalidade.values());
         boxPais.getItems().addAll(Pais.values());
-        //btnAdd.onAc
-        
-                tblClass.setItems(FXCollections.observableList(RepositorioDeMedalhas.getinstance().Listar()));
+        tblClass.setItems(getMedalha());
+//btnAdd.onAc
+        //tblClass.setItems(FXCollections.observableList(RepositorioDeMedalhas.getinstance().Listar()));
 
     }
 
     @Override
     public void handle(Event event) {
+        System.out.println("Funcionando ");
         if (event.getSource().equals(btnAdd)) {
+            System.out.println("Funcionando 2 ");
+
             try {
-                f.inserir(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
-                tblClass.setItems(FXCollections.observableList(RepositorioDeMedalhas.getinstance().Listar()));
+                //Tentando imprimir a tabela na GUI
+                //System.out.println(boxTipo.getValue(). + boxMod.getValue().toString() + boxPais.getValue().toString());
+                c.inserir(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
+                System.out.println("teste ok");
+                tblClass.getItems().add(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
+                
+                System.out.println(boxMod.getItems());
+
             } catch (ElementoJaExisteException e) {
+                //   sysout3
 
                 Alert a1 = new Alert(AlertType.INFORMATION);
 

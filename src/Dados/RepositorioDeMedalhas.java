@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class RepositorioDeMedalhas {
 
@@ -34,19 +36,23 @@ public class RepositorioDeMedalhas {
     
 
     public void inserir(Medalha med) throws  ElementoJaExisteException {
-        if (med != null && !this.medalha.contains(med)) {
+        //med != null && !this.medalha.contains(med)
+        if (false) {
             
             throw new ElementoJaExisteException(med);
             
-        } else {
+        } else if (med == null){
             
-            medalha.add(med);
+            System.out.println("ERRRO NULL POINT");
+            
+        }else{
+            this.medalha.add(med);
+            System.out.println("medalha inserida com sucesso");
         }
 
         }
- 
 
-    public List Listar() {
+    public List<Medalha> Listar() {
 
         return Collections.unmodifiableList(medalha);
     }
