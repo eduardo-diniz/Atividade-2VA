@@ -20,6 +20,14 @@ public class Medalha {
         return modalidade;
     }
 
+    public Pais getPais() {
+        return pais;
+    }
+
+    public TipoDeMedalhas getTipoDeMedalhas() {
+        return tipoDeMedalhas;
+    }
+
     @Override
     public boolean equals(Object obj) {
 

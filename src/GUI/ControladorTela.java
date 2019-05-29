@@ -20,7 +20,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ControladorTela implements EventHandler<Event> {
 
@@ -29,11 +31,23 @@ public class ControladorTela implements EventHandler<Event> {
 
     @FXML
     void addMed(ActionEvent event) {
-
+     initialize();
     }
 
     Controlador c = new Controlador();
 
+    
+       @FXML
+    private TableColumn<Medalha, Pais> pais;
+
+    @FXML
+    private TableColumn<Medalha, Modalidade> mod;
+
+    @FXML
+    private TableColumn<Medalha, TipoDeMedalhas> med;
+    
+    
+    
     @FXML
     private TableView<Medalha> tblClass;
 
@@ -61,7 +75,18 @@ public class ControladorTela implements EventHandler<Event> {
         boxTipo.getItems().addAll(TipoDeMedalhas.values());
         boxMod.getItems().addAll(Modalidade.values());
         boxPais.getItems().addAll(Pais.values());
-        tblClass.setItems(getMedalha());
+        
+        pais.setCellValueFactory(new PropertyValueFactory<> ("pais"));
+        mod.setCellValueFactory(new PropertyValueFactory<> ("modalidade"));
+        med.setCellValueFactory(new PropertyValueFactory<> ("tipoDeMedalhas"));
+
+        
+        
+        
+        tblClass.setItems(FXCollections.observableList(c.Listar()));
+       
+        
+        
 //btnAdd.onAc
         //tblClass.setItems(FXCollections.observableList(RepositorioDeMedalhas.getinstance().Listar()));
 
@@ -69,6 +94,8 @@ public class ControladorTela implements EventHandler<Event> {
 
     @Override
     public void handle(Event event) {
+        
+        
         System.out.println("Funcionando ");
         if (event.getSource().equals(btnAdd)) {
             System.out.println("Funcionando 2 ");
@@ -76,11 +103,14 @@ public class ControladorTela implements EventHandler<Event> {
             try {
                 //Tentando imprimir a tabela na GUI
                 //System.out.println(boxTipo.getValue(). + boxMod.getValue().toString() + boxPais.getValue().toString());
-                c.inserir(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
-                System.out.println("teste ok");
-                tblClass.getItems().add(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
                 
-                System.out.println(boxMod.getItems());
+                c.inserir(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
+                
+                System.out.println("teste ok");
+                //tblClass.setItems((ObservableList<Medalha>) new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
+                        tblClass.setItems(FXCollections.observableList(c.Listar()));
+
+               // System.out.println(boxMod.getItems());
 
             } catch (ElementoJaExisteException e) {
                 //   sysout3

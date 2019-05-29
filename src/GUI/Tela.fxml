@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="354.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="GUI.ControladorTela">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="354.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ControladorTela">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="354.0" minWidth="10.0" prefWidth="354.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.0" minWidth="0.0" prefWidth="0.0" />
@@ -51,9 +51,9 @@
       </AnchorPane>
       <TableView fx:id="tblClass" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
         <columns>
-          <TableColumn prefWidth="75.0" text="Pais" />
-          <TableColumn prefWidth="75.0" text="Modalidade" />
-            <TableColumn prefWidth="75.0" text="Medalha" />
+          <TableColumn fx:id="pais" prefWidth="75.0" text="Pais" />
+          <TableColumn fx:id="mod" prefWidth="75.0" text="Modalidade" />
+            <TableColumn fx:id="med" prefWidth="75.0" text="Medalha" />
         </columns>
       </TableView>
    </children>
