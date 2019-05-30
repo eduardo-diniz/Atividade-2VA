@@ -2,6 +2,7 @@ package Negocios;
 
 import Dados.RepositorioDeMedalhas;
 import Exception.ElementoJaExisteException;
+import Exception.ElementoNaoAtualizavelException;
 import Exception.ElementoNaoExisteException;
 import Negocios.Beans.Medalha;
 import java.util.Collections;
@@ -28,9 +29,9 @@ public class Controlador {
         
     }
     
-    public void atualizar(Medalha medNova) throws ElementoJaExisteException {
+    public void atualizar(Medalha medAtualizada) throws ElementoNaoAtualizavelException {
         
-        repositorioMedalhas.getinstance().atualizar(medNova);
+    repositorioMedalhas.getinstance().atualizar(medAtualizada);
     }
     
     public void remover(Medalha medalhaRem) throws ElementoNaoExisteException {

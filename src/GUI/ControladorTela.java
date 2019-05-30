@@ -2,6 +2,8 @@ package GUI;
 
 import Dados.RepositorioDeMedalhas;
 import Exception.ElementoJaExisteException;
+import Exception.ElementoNaoAtualizavelException;
+import Exception.ElementoNaoExisteException;
 import Negocios.Beans.Medalha;
 import Negocios.Beans.Modalidade;
 import Negocios.Beans.Pais;
@@ -10,6 +12,8 @@ import Negocios.Controlador;
 import Negocios.Fachada;
 import com.sun.javafx.collections.ImmutableObservableList;
 import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,14 +34,14 @@ public class ControladorTela implements EventHandler<Event> {
     private Button btnAdd;
 
     @FXML
-    void addMed(ActionEvent event) {
-     initialize();
-    }
+    private Button btnRem;
+
+    @FXML
+    private Button btnAtt;
 
     Controlador c = new Controlador();
 
-    
-       @FXML
+    @FXML
     private TableColumn<Medalha, Pais> pais;
 
     @FXML
@@ -45,9 +49,7 @@ public class ControladorTela implements EventHandler<Event> {
 
     @FXML
     private TableColumn<Medalha, TipoDeMedalhas> med;
-    
-    
-    
+
     @FXML
     private TableView<Medalha> tblClass;
 
@@ -75,27 +77,18 @@ public class ControladorTela implements EventHandler<Event> {
         boxTipo.getItems().addAll(TipoDeMedalhas.values());
         boxMod.getItems().addAll(Modalidade.values());
         boxPais.getItems().addAll(Pais.values());
-        
-        pais.setCellValueFactory(new PropertyValueFactory<> ("pais"));
-        mod.setCellValueFactory(new PropertyValueFactory<> ("modalidade"));
-        med.setCellValueFactory(new PropertyValueFactory<> ("tipoDeMedalhas"));
 
-        
-        
-        
+        pais.setCellValueFactory(new PropertyValueFactory<>("pais"));
+        mod.setCellValueFactory(new PropertyValueFactory<>("modalidade"));
+        med.setCellValueFactory(new PropertyValueFactory<>("tipoDeMedalhas"));
+
         tblClass.setItems(FXCollections.observableList(c.Listar()));
-       
-        
-        
-//btnAdd.onAc
-        //tblClass.setItems(FXCollections.observableList(RepositorioDeMedalhas.getinstance().Listar()));
 
     }
 
     @Override
     public void handle(Event event) {
-        
-        
+
         System.out.println("Funcionando ");
         if (event.getSource().equals(btnAdd)) {
             System.out.println("Funcionando 2 ");
@@ -103,25 +96,59 @@ public class ControladorTela implements EventHandler<Event> {
             try {
                 //Tentando imprimir a tabela na GUI
                 //System.out.println(boxTipo.getValue(). + boxMod.getValue().toString() + boxPais.getValue().toString());
-                
+
                 c.inserir(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
-                
+
                 System.out.println("teste ok");
                 //tblClass.setItems((ObservableList<Medalha>) new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
-                        tblClass.setItems(FXCollections.observableList(c.Listar()));
+                tblClass.setItems(FXCollections.observableList(c.Listar()));
 
-               // System.out.println(boxMod.getItems());
-
+                // System.out.println(boxMod.getItems());
             } catch (ElementoJaExisteException e) {
-                //   sysout3
 
-                Alert a1 = new Alert(AlertType.INFORMATION);
+                Alert a1 = new Alert(Alert.AlertType.ERROR);
 
                 a1.setTitle("Erro");
                 a1.setHeaderText("Medalha Não Adicionada");
                 a1.setContentText("A Medalha que vc tentou adicionar já existe");
+                a1.showAndWait();
             }
         }
-    }
+        if (event.getSource().equals(btnRem)) {
 
+            try {
+
+                c.remover(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
+
+                tblClass.setItems(FXCollections.observableList(c.Listar()));
+
+            } catch (ElementoNaoExisteException mm) {
+                Alert a2 = new Alert(Alert.AlertType.ERROR);
+
+                a2.setTitle("Erro");
+                a2.setHeaderText("Medalha Não Removida");
+                a2.setContentText("A Medalha que vc tentou remover não existe");
+                a2.showAndWait();
+            }
+
+        }
+        if (event.getSource().equals(btnAtt)) {
+
+            try {
+                c.atualizar(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
+                
+               tblClass.setItems(FXCollections.observableList(c.Listar()));
+
+            } catch(ElementoNaoAtualizavelException ex) {
+                
+                  Alert a3 = new Alert(Alert.AlertType.ERROR);
+
+                a3.setTitle("Erro");
+                a3.setHeaderText("Medalha Não Removida");
+                a3.setContentText("A Medalha que vc tentou atualizar não existe");
+                a3.showAndWait();
+            }
+        }
+
+    }
 }

@@ -24,8 +24,8 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button layoutX="102.0" layoutY="108.0" mnemonicParsing="false" text="Remover" />
-            <Button layoutX="177.0" layoutY="108.0" mnemonicParsing="false" text="Atualizar" />
+            <Button fx:id="btnRem" layoutX="102.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Remover" />
+            <Button fx:id="btnAtt" layoutX="177.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Atualizar" />
             <Button layoutX="248.0" layoutY="108.0" mnemonicParsing="false" text="PAIS " />
             <Button fx:id="btnAdd" layoutX="20.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Adicionar" />
             <Button layoutX="300.0" layoutY="108.0" mnemonicParsing="false" text="Lista" />

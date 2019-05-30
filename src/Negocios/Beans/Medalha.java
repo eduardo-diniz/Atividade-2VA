@@ -35,7 +35,8 @@ public class Medalha {
 
         if (obj instanceof Medalha) {
             Medalha m = (Medalha) obj;
-            if (this.modalidade.equals(m.getModalidade())) {
+            if (this.modalidade.equals(m.getModalidade()) &&
+                    this.tipoDeMedalhas.equals(m.getTipoDeMedalhas())) {
 
                 resultado = true;
             }

@@ -18,19 +18,6 @@ TipoDeMedalhas (String nome){
         return nomeMedalha;
     }
 
-/*@Override
-    public boolean equals (Object obj){
-        
-        boolean igual = false;
-        
-        if (obj instanceof TipoDeMedalhas){
-            
-            TipoDeMedalhas t = (TipoDeMedalhas) obj;
-            if (this.)
-            
-        }
-        
-    }*/
     
 }
 

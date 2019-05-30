@@ -1,6 +1,7 @@
 package Dados;
 
 import Exception.ElementoJaExisteException;
+import Exception.ElementoNaoAtualizavelException;
 import Exception.ElementoNaoExisteException;
 import Negocios.Beans.Medalha;
 import com.sun.javafx.UnmodifiableArrayList;
@@ -36,8 +37,8 @@ public class RepositorioDeMedalhas {
     
 
     public void inserir(Medalha med) throws  ElementoJaExisteException {
-        //med != null && !this.medalha.contains(med)
-        if (false) {
+        
+        if (this.medalha.contains(med)) {
             
             throw new ElementoJaExisteException(med);
             
@@ -57,14 +58,15 @@ public class RepositorioDeMedalhas {
         return Collections.unmodifiableList(medalha);
     }
 
-    public void atualizar(Medalha medNova) throws ElementoJaExisteException {
+    public void atualizar(Medalha medAtualizada) throws ElementoNaoAtualizavelException {
 
-        if (this.medalha.contains(medNova)) {
-            int indice = this.medalha.indexOf(medNova);
-            this.medalha.set(indice, medNova);
+        if (this.medalha.contains(medAtualizada)) {
+            int indice = this.medalha.indexOf(medAtualizada);
+            System.out.println(indice);
+            this.medalha.set(indice, medAtualizada);
         } else {
 
-            throw new ElementoJaExisteException(medNova);
+            throw new ElementoNaoAtualizavelException(medAtualizada);
         }
 
     }

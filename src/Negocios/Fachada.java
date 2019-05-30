@@ -7,9 +7,11 @@ package Negocios;
 
 import Dados.RepositorioDeMedalhas;
 import Exception.ElementoJaExisteException;
+import Exception.ElementoNaoAtualizavelException;
+import Exception.ElementoNaoExisteException;
 import Negocios.Beans.Medalha;
 import java.util.ArrayList;
-
+import java.util.List;
 
 /**
  *
@@ -20,30 +22,48 @@ public class Fachada {
     private static Fachada instance;
 
     private Controlador meda;
-    
 
-private Fachada(){
-    
-    this.meda = new Controlador();
-    
-}
+    private Fachada() {
 
-public static Fachada getinstance() {
+        this.meda = new Controlador();
+
+    }
+
+    public static Fachada getinstance() {
 
         if (instance == null) {
             instance = new Fachada();
-                
-        }        
-              return instance;
 
+        }
+        return instance;
 
-}
+    }
 
+    public void inserir(Medalha med) throws ElementoJaExisteException {
 
+        meda.inserir(med);
 
+    }
+
+    public List Listar() {
+
+        return meda.Listar();
+
+    }
     
-public void inserir(Medalha med) throws  ElementoJaExisteException{
     
-    RepositorioDeMedalhas.getinstance().inserir(med);
-}
+    public void remover (Medalha medalhaRem) throws ElementoNaoExisteException {
+        
+         meda.remover(medalhaRem);
+        
+    }
+    
+    public void atualizar (Medalha  medAtualizada) throws ElementoNaoAtualizavelException {
+    
+        
+        meda.atualizar(medAtualizada);
+        
+    }
+    
+    
 }
