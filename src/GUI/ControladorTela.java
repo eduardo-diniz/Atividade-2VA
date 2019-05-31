@@ -62,6 +62,14 @@ public class ControladorTela implements EventHandler<Event> {
     @FXML
     private ChoiceBox<Pais> boxPais;
 
+    @FXML
+    private Button btnLPais;
+    
+    
+    @FXML
+    private Button lstPaises;
+    
+
     ObservableList<Medalha> m = FXCollections.observableArrayList();
 
     public ObservableList<Medalha> getMedalha() {
@@ -89,9 +97,9 @@ public class ControladorTela implements EventHandler<Event> {
     @Override
     public void handle(Event event) {
 
-        System.out.println("Funcionando ");
+        System.out.println("Funcionando o Handle");
         if (event.getSource().equals(btnAdd)) {
-            System.out.println("Funcionando 2 ");
+            System.out.println("Funcionando o botão adcionar ");
 
             try {
                 //Tentando imprimir a tabela na GUI
@@ -99,7 +107,7 @@ public class ControladorTela implements EventHandler<Event> {
 
                 c.inserir(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
 
-                System.out.println("teste ok");
+                System.out.println("Funcionando inserção de medalhas");
                 //tblClass.setItems((ObservableList<Medalha>) new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
                 tblClass.setItems(FXCollections.observableList(c.Listar()));
 
@@ -136,12 +144,12 @@ public class ControladorTela implements EventHandler<Event> {
 
             try {
                 c.atualizar(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
-                
-               tblClass.setItems(FXCollections.observableList(c.Listar()));
+                tblClass.refresh();
+                // tblClass.setItems(FXCollections.observableList(c.Listar()));
 
-            } catch(ElementoNaoAtualizavelException ex) {
-                
-                  Alert a3 = new Alert(Alert.AlertType.ERROR);
+            } catch (ElementoNaoAtualizavelException ex) {
+
+                Alert a3 = new Alert(Alert.AlertType.ERROR);
 
                 a3.setTitle("Erro");
                 a3.setHeaderText("Medalha Não Removida");
@@ -150,5 +158,15 @@ public class ControladorTela implements EventHandler<Event> {
             }
         }
 
+        if (event.getSource().equals(btnLPais)) {
+
+            c.ordenarModalidade();
+            tblClass.refresh();
+        }
+        if (event.getSource().equals(lstPaises)){
+            
+            c.
+            
+        }
     }
 }

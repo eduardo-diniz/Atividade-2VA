@@ -24,11 +24,11 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button fx:id="btnRem" layoutX="102.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Remover" />
-            <Button fx:id="btnAtt" layoutX="177.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Atualizar" />
-            <Button layoutX="248.0" layoutY="108.0" mnemonicParsing="false" text="PAIS " />
-            <Button fx:id="btnAdd" layoutX="20.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Adicionar" />
-            <Button layoutX="300.0" layoutY="108.0" mnemonicParsing="false" text="Lista" />
+            <Button fx:id="btnRem" layoutX="82.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Remover" />
+            <Button fx:id="btnAtt" layoutX="157.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Atualizar" />
+            <Button fx:id="btnLPais" layoutX="228.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Listar Moda" />
+            <Button fx:id="btnAdd" layoutX="10.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Adicionar" />
+            <Button fx:id="lstPaises" layoutX="311.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Lista P" />
             <ChoiceBox fx:id="boxTipo" layoutX="134.0" layoutY="13.0" prefWidth="150.0" />
             <ChoiceBox fx:id="boxMod" layoutX="133.0" layoutY="44.0" prefWidth="150.0" />
             <ChoiceBox fx:id="boxPais" layoutX="133.0" layoutY="76.0" prefWidth="150.0" />
@@ -49,7 +49,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <TableView fx:id="tblClass" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <TableView fx:id="tblClass" prefHeight="135.0" prefWidth="377.0" GridPane.rowIndex="1">
         <columns>
           <TableColumn fx:id="pais" prefWidth="75.0" text="Pais" />
           <TableColumn fx:id="mod" prefWidth="75.0" text="Modalidade" />

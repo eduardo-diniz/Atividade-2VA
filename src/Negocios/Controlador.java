@@ -10,6 +10,8 @@ import java.util.List;
 
 public class Controlador {
     
+    
+    
     private RepositorioDeMedalhas repositorioMedalhas;
     
     public Controlador() {
@@ -43,5 +45,16 @@ public class Controlador {
      public String toString(Medalha medalha) {
         return toString();
     }
+     
+     
+     public void ordenarModalidade(){
+         
+         repositorioMedalhas.ordenarModalidade();
+         
+     }
+     
+     public void ordenarPaises ()
     
+             
+             
 }

@@ -83,5 +83,14 @@ public class RepositorioDeMedalhas {
         }
 
     }
-
+    
+    
+    
+    public void ordenarModalidade(){
+        
+        Collections.sort(medalha);
+        
+    }
+    
+    public void 
 }

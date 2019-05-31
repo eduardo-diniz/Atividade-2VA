@@ -2,7 +2,7 @@ package Negocios.Beans;
 
 import java.util.Objects;
 
-public class Medalha {
+public class Medalha implements Comparable<Medalha> {
 
     private Modalidade modalidade;
     private Pais pais;
@@ -44,5 +44,17 @@ public class Medalha {
         return resultado;
 
     }
+    
+     @Override
+    public int compareTo(Medalha t) {
+        
+        return this.modalidade.compareTo(t.modalidade);
+        
+    }
+    
+    
+    
+
+
 
 }
