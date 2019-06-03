@@ -5,6 +5,7 @@ import Exception.ElementoNaoAtualizavelException;
 import Exception.ElementoNaoExisteException;
 import Negocios.Beans.Medalha;
 import Negocios.Beans.Pais;
+import Negocios.Beans.TipoDeMedalhas;
 import Negocios.CompararPaises;
 import com.sun.javafx.UnmodifiableArrayList;
 import java.util.ArrayList;
@@ -95,11 +96,23 @@ public class RepositorioDeMedalhas {
     }
 
     public List ordenarPaises() {
+
         CompararPaises compararpaises = new CompararPaises();
-        
+
         Collections.sort(medalha, compararpaises);
+
         return medalha;
 
+    }
+
+    public int contatorMedalhas(Pais pais, TipoDeMedalhas tipo) {
+        int resultado = 0;
+        for (Medalha medalha : medalha) {
+            if (medalha.getPais() == pais && medalha.getTipoDeMedalhas() == tipo) {
+                resultado++;
+            }
+        }
+        return resultado;
     }
 
 }

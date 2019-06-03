@@ -27,7 +27,7 @@ private String nomePais;
 
 Pais(String nome) {
 
-this.nomePais = nomePais;
+this.nomePais = nome;
 
 }
 

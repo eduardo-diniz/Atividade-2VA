@@ -28,6 +28,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import Negocios.CompararPaises;
+import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
 public class ControladorTela implements EventHandler<Event> {
 
@@ -55,10 +59,7 @@ public class ControladorTela implements EventHandler<Event> {
     private TableView<Medalha> tblClass;
 
     @FXML
-    private ChoiceBox<Pais> boxPais2;
-
-    @FXML
-    private ChoiceBox<TipoDeMedalhas> boxTipo;
+    private ComboBox<Pais> boxPais2;
 
     @FXML
     private ChoiceBox<Modalidade> boxMod;
@@ -71,6 +72,22 @@ public class ControladorTela implements EventHandler<Event> {
 
     @FXML
     private Button btnLPaises;
+
+    @FXML
+    private Text nOuro;
+
+    @FXML
+    private Text nPrata;
+
+    @FXML
+    private Text nBronze;
+    
+     @FXML
+    private ComboBox<TipoDeMedalhas> boxTipo;
+     
+     
+    @FXML
+    private ImageView corMedalha;
 
     ObservableList<Medalha> m = FXCollections.observableArrayList();
 
@@ -88,7 +105,7 @@ public class ControladorTela implements EventHandler<Event> {
         boxMod.getItems().addAll(Modalidade.values());
         boxPais.getItems().addAll(Pais.values());
         boxPais2.getItems().addAll(Pais.values());
-        
+
         pais.setCellValueFactory(new PropertyValueFactory<>("pais"));
         mod.setCellValueFactory(new PropertyValueFactory<>("modalidade"));
         med.setCellValueFactory(new PropertyValueFactory<>("tipoDeMedalhas"));
@@ -162,17 +179,36 @@ public class ControladorTela implements EventHandler<Event> {
         }
 
         if (event.getSource().equals(btnLMod)) {
-                
+
             c.ordenarModalidade();
             tblClass.refresh();
-            
+
         }
         if (event.getSource().equals(btnLPaises)) {
 
-           c.ordenarPaises();      
-           
-           tblClass.refresh();
+            c.ordenarPaises();
+
+            tblClass.refresh();
+
+        }
+        if (event.getSource().equals(boxPais2)) {
+            if (boxPais2.getSelectionModel().getSelectedItem() != null) {
+                int ouro = c.contatorMedalhas(boxPais2.getSelectionModel().getSelectedItem(), TipoDeMedalhas.OURO);
+                nOuro.setText("Ouro" + ouro);
+                int prata = c.contatorMedalhas(boxPais2.getSelectionModel().getSelectedItem(), TipoDeMedalhas.PRATA);
+                nPrata.setText("Prata" + prata);
+                int bronze = c.contatorMedalhas(boxPais2.getSelectionModel().getSelectedItem(), TipoDeMedalhas.BRONZE);
+                nBronze.setText("Bronze" + bronze);
+            }
+
+        } if (event.getSource().equals(boxMod)){
+            if (boxMod.getSelectionModel().getSelectedItem() !=null){
+                
+                corMedalha.setImage(new Image (New    "ouro.png"));
+                
+            }
             
         }
     }
+
 }

@@ -5,12 +5,14 @@ import Exception.ElementoJaExisteException;
 import Exception.ElementoNaoAtualizavelException;
 import Exception.ElementoNaoExisteException;
 import Negocios.Beans.Medalha;
+import Negocios.Beans.Pais;
+import Negocios.Beans.TipoDeMedalhas;
 import java.util.Collections;
 import java.util.List;
 
 public class Controlador {
     
-    
+   
     
     private RepositorioDeMedalhas repositorioMedalhas;
     
@@ -59,7 +61,9 @@ public class Controlador {
         return repositorioMedalhas.ordenarPaises();
      }
      
-      
+     public int contatorMedalhas(Pais pais, TipoDeMedalhas tipo){
+             return repositorioMedalhas.contatorMedalhas(pais, tipo);
+     }
   
              
              
