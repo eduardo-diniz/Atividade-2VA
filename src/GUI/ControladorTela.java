@@ -27,6 +27,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import Negocios.CompararPaises;
 
 public class ControladorTela implements EventHandler<Event> {
 
@@ -54,6 +55,9 @@ public class ControladorTela implements EventHandler<Event> {
     private TableView<Medalha> tblClass;
 
     @FXML
+    private ChoiceBox<Pais> boxPais2;
+
+    @FXML
     private ChoiceBox<TipoDeMedalhas> boxTipo;
 
     @FXML
@@ -63,12 +67,10 @@ public class ControladorTela implements EventHandler<Event> {
     private ChoiceBox<Pais> boxPais;
 
     @FXML
-    private Button btnLPais;
-    
-    
+    private Button btnLMod;
+
     @FXML
-    private Button lstPaises;
-    
+    private Button btnLPaises;
 
     ObservableList<Medalha> m = FXCollections.observableArrayList();
 
@@ -85,7 +87,8 @@ public class ControladorTela implements EventHandler<Event> {
         boxTipo.getItems().addAll(TipoDeMedalhas.values());
         boxMod.getItems().addAll(Modalidade.values());
         boxPais.getItems().addAll(Pais.values());
-
+        boxPais2.getItems().addAll(Pais.values());
+        
         pais.setCellValueFactory(new PropertyValueFactory<>("pais"));
         mod.setCellValueFactory(new PropertyValueFactory<>("modalidade"));
         med.setCellValueFactory(new PropertyValueFactory<>("tipoDeMedalhas"));
@@ -158,14 +161,17 @@ public class ControladorTela implements EventHandler<Event> {
             }
         }
 
-        if (event.getSource().equals(btnLPais)) {
-
+        if (event.getSource().equals(btnLMod)) {
+                
             c.ordenarModalidade();
             tblClass.refresh();
-        }
-        if (event.getSource().equals(lstPaises)){
             
-            c.
+        }
+        if (event.getSource().equals(btnLPaises)) {
+
+           c.ordenarPaises();      
+           
+           tblClass.refresh();
             
         }
     }

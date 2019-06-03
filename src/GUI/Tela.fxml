@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="354.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ControladorTela">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ControladorTela">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="354.0" minWidth="10.0" prefWidth="354.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="501.0" minWidth="10.0" prefWidth="501.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.0" minWidth="0.0" prefWidth="0.0" />
   </columnConstraints>
   <rowConstraints>
@@ -24,14 +24,14 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button fx:id="btnRem" layoutX="82.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Remover" />
-            <Button fx:id="btnAtt" layoutX="157.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Atualizar" />
-            <Button fx:id="btnLPais" layoutX="228.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Listar Moda" />
-            <Button fx:id="btnAdd" layoutX="10.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Adicionar" />
-            <Button fx:id="lstPaises" layoutX="311.0" layoutY="108.0" mnemonicParsing="false" onAction="#handle" text="Lista P" />
-            <ChoiceBox fx:id="boxTipo" layoutX="134.0" layoutY="13.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="boxMod" layoutX="133.0" layoutY="44.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="boxPais" layoutX="133.0" layoutY="76.0" prefWidth="150.0" />
+            <Button fx:id="btnRem" layoutX="92.0" layoutY="118.0" mnemonicParsing="false" onAction="#handle" text="Remover" />
+            <Button fx:id="btnAtt" layoutX="167.0" layoutY="118.0" mnemonicParsing="false" onAction="#handle" text="Atualizar" />
+            <Button fx:id="btnLMod" layoutX="238.0" layoutY="118.0" mnemonicParsing="false" onAction="#handle" text="Listar Modalidade" />
+            <Button fx:id="btnAdd" layoutX="10.0" layoutY="118.0" mnemonicParsing="false" onAction="#handle" text="Adicionar" />
+            <Button fx:id="btnLPaises" layoutX="361.0" layoutY="118.0" mnemonicParsing="false" onAction="#handle" prefHeight="25.0" prefWidth="79.0" text="Lista Paises" />
+            <ChoiceBox fx:id="boxTipo" layoutX="134.0" layoutY="13.0" prefHeight="25.0" prefWidth="176.0" />
+            <ChoiceBox fx:id="boxMod" layoutX="133.0" layoutY="44.0" prefHeight="25.0" prefWidth="176.0" />
+            <ChoiceBox fx:id="boxPais" layoutX="133.0" layoutY="76.0" prefHeight="25.0" prefWidth="176.0" />
             <Text layoutX="43.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" wrappingWidth="40.0">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -51,10 +51,16 @@
       </AnchorPane>
       <TableView fx:id="tblClass" prefHeight="135.0" prefWidth="377.0" GridPane.rowIndex="1">
         <columns>
-          <TableColumn fx:id="pais" prefWidth="75.0" text="Pais" />
-          <TableColumn fx:id="mod" prefWidth="75.0" text="Modalidade" />
-            <TableColumn fx:id="med" prefWidth="75.0" text="Medalha" />
+          <TableColumn fx:id="pais" prefWidth="107.0" text="Pais" />
+          <TableColumn fx:id="mod" minWidth="5.0" prefWidth="118.0" text="Modalidade" />
+            <TableColumn fx:id="med" minWidth="0.0" prefWidth="123.0" text="Medalha" />
         </columns>
       </TableView>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+         <children>
+            <ChoiceBox fx:id="boxPais2" layoutX="337.0" layoutY="2.0" prefWidth="150.0" />
+            <Text layoutX="298.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="País:" wrappingWidth="30.42578125" />
+         </children>
+      </AnchorPane>
    </children>
 </GridPane>

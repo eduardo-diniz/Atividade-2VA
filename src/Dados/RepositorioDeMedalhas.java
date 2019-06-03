@@ -4,11 +4,17 @@ import Exception.ElementoJaExisteException;
 import Exception.ElementoNaoAtualizavelException;
 import Exception.ElementoNaoExisteException;
 import Negocios.Beans.Medalha;
+import Negocios.Beans.Pais;
+import Negocios.CompararPaises;
 import com.sun.javafx.UnmodifiableArrayList;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import static java.util.Collections.list;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
+import static java.util.Objects.compare;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -29,29 +35,27 @@ public class RepositorioDeMedalhas {
         if (instance == null) {
             RepositorioDeMedalhas.instance = new RepositorioDeMedalhas();
 
-        } 
+        }
         return instance;
 
     }
-    
-    
 
-    public void inserir(Medalha med) throws  ElementoJaExisteException {
-        
+    public void inserir(Medalha med) throws ElementoJaExisteException {
+
         if (this.medalha.contains(med)) {
-            
+
             throw new ElementoJaExisteException(med);
-            
-        } else if (med == null){
-            
+
+        } else if (med == null) {
+
             System.out.println("ERRRO NULL POINT");
-            
-        }else{
+
+        } else {
             this.medalha.add(med);
             System.out.println("medalha inserida com sucesso");
         }
 
-        }
+    }
 
     public List<Medalha> Listar() {
 
@@ -73,7 +77,7 @@ public class RepositorioDeMedalhas {
 
     public void remover(Medalha medalhaRem) throws ElementoNaoExisteException {
 
-        if  (this.medalha.contains(medalhaRem)) {
+        if (this.medalha.contains(medalhaRem)) {
             this.medalha.remove(medalhaRem);
 
         } else {
@@ -83,14 +87,19 @@ public class RepositorioDeMedalhas {
         }
 
     }
-    
-    
-    
-    public void ordenarModalidade(){
-        
+
+    public void ordenarModalidade() {
+
         Collections.sort(medalha);
-        
+
     }
-    
-    public void 
+
+    public List ordenarPaises() {
+        CompararPaises compararpaises = new CompararPaises();
+        
+        Collections.sort(medalha, compararpaises);
+        return medalha;
+
+    }
+
 }

@@ -7,17 +7,18 @@ import java.util.Comparator;
 
 /**
  *
- * @author visitantere
+ * @author Eduardo
  */
 public class CompararPaises implements Comparator<Medalha>{
 
-  
+ 
 
     @Override
     public int compare(Medalha t, Medalha t1) {
       return t.getPais().getNomePais().compareTo(t1.getPais().getNomePais());
         
     }
+    
     
     
     

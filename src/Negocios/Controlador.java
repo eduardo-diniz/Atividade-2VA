@@ -53,8 +53,14 @@ public class Controlador {
          
      }
      
-     public void ordenarPaises ()
-    
+     public List ordenarPaises(){
+         
+         
+        return repositorioMedalhas.ordenarPaises();
+     }
+     
+      
+  
              
              
 }
