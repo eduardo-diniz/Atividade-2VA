@@ -1,7 +1,5 @@
 package Negocios.Beans;
 
-import java.util.Objects;
-
 public class Medalha implements Comparable<Medalha> {
 
     private Modalidade modalidade;
@@ -35,8 +33,8 @@ public class Medalha implements Comparable<Medalha> {
 
         if (obj instanceof Medalha) {
             Medalha m = (Medalha) obj;
-            if (this.modalidade.equals(m.getModalidade()) &&
-                    this.tipoDeMedalhas.equals(m.getTipoDeMedalhas())) {
+            if (this.modalidade.equals(m.getModalidade())
+                    && this.tipoDeMedalhas.equals(m.getTipoDeMedalhas())) {
 
                 resultado = true;
             }
@@ -44,17 +42,12 @@ public class Medalha implements Comparable<Medalha> {
         return resultado;
 
     }
-    
-     @Override
+
+    @Override
     public int compareTo(Medalha t) {
-        
+
         return this.modalidade.compareTo(t.modalidade);
-        
+
     }
-    
-    
-    
-
-
 
 }

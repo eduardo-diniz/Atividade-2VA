@@ -2,36 +2,36 @@ package Negocios.Beans;
 
 public enum Pais {
 
-BRA("Brasil"), 
-ARG("Argentina"), 
-CAN ("Canadá"),
-CHN ("China"),
-USA ("Estados Unidos"),
-COL ("Colômbia"),
-CUB ("Cuba"),
-DEN ("Dinamarca"),
-CRO ("Croácia"),
-CZE ("República Checa"),
-EGY ("Egito"),
-ESP ("Espanha"),
-PRT ("Portugal"),
-PER ("Peru"),
-CHL ("Chile"),
-FRA ("France"),
-ITA ("Italy"),
-URY ("Uruguay"),
-RUS ("Russia"),
-MEX ("Mexico");
+    BRA("Brasil"),
+    ARG("Argentina"),
+    CAN("Canadá"),
+    CHN("China"),
+    USA("Estados Unidos"),
+    COL("Colômbia"),
+    CUB("Cuba"),
+    DEN("Dinamarca"),
+    CRO("Croácia"),
+    CZE("República Checa"),
+    EGY("Egito"),
+    ESP("Espanha"),
+    PRT("Portugal"),
+    PER("Peru"),
+    CHL("Chile"),
+    FRA("France"),
+    ITA("Italy"),
+    URY("Uruguay"),
+    RUS("Russia"),
+    MEX("Mexico");
 
-private String nomePais;
+    private String nomePais;
 
-Pais(String nome) {
+    Pais(String nome) {
 
-this.nomePais = nome;
+        this.nomePais = nome;
 
-}
+    }
 
-public String getNomePais() {
-return nomePais;
-}
+    public String getNomePais() {
+        return nomePais;
+    }
 }

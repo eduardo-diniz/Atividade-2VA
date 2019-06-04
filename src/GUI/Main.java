@@ -12,6 +12,7 @@ import Negocios.Beans.Pais;
 import Negocios.Beans.TipoDeMedalhas;
 import Negocios.Controlador;
 import Negocios.Fachada;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,24 +22,13 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author visitantere
+ * @author Eduardo
  */
 public class Main extends Application {
 
     public static void main(String[] args) {
 
-        Medalha s = new Medalha(Modalidade.CURLING, Pais.ARG, TipoDeMedalhas.PRATA);
-
-        try {
-            Fachada.getinstance().inserir(s);
-        }catch (ElementoJaExisteException k){
-            
-            
-            
-        }
-        
         launch(args);
-        
 
     }
 
@@ -50,8 +40,7 @@ public class Main extends Application {
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
         }
 
     }

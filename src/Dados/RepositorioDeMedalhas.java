@@ -1,5 +1,9 @@
 package Dados;
 
+/**
+ *
+ * @author Eduardo
+ */
 import Exception.ElementoJaExisteException;
 import Exception.ElementoNaoAtualizavelException;
 import Exception.ElementoNaoExisteException;
@@ -49,11 +53,9 @@ public class RepositorioDeMedalhas {
 
         } else if (med == null) {
 
-            System.out.println("ERRRO NULL POINT");
-
         } else {
             this.medalha.add(med);
-            System.out.println("medalha inserida com sucesso");
+
         }
 
     }
@@ -63,22 +65,24 @@ public class RepositorioDeMedalhas {
         return Collections.unmodifiableList(medalha);
     }
 
-    public void atualizar(Medalha medAtualizada) throws ElementoNaoAtualizavelException {
+    public void atualizar(Medalha medAntiga, Medalha medNova) throws ElementoNaoAtualizavelException {
 
-        if (this.medalha.contains(medAtualizada)) {
-            int indice = this.medalha.indexOf(medAtualizada);
-            System.out.println(indice);
-            this.medalha.set(indice, medAtualizada);
+        if (this.medalha.contains(medAntiga)
+                && (!medalha.contains(medNova)
+                || medAntiga.equals(medNova))) {
+            int indice = this.medalha.indexOf(medAntiga);
+            medalha.set(indice, medNova);
         } else {
 
-            throw new ElementoNaoAtualizavelException(medAtualizada);
+            throw new ElementoNaoAtualizavelException(medAntiga);
         }
 
     }
 
     public void remover(Medalha medalhaRem) throws ElementoNaoExisteException {
 
-        if (this.medalha.contains(medalhaRem)) {
+        if (this.medalha.contains(medalhaRem) && (null != medalhaRem)) {
+
             this.medalha.remove(medalhaRem);
 
         } else {

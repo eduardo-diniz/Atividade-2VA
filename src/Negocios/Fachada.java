@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *
- * @author visitantere
+ * @author Eduardo
  */
 public class Fachada {
 
@@ -58,10 +58,10 @@ public class Fachada {
         
     }
     
-    public void atualizar (Medalha  medAtualizada) throws ElementoNaoAtualizavelException {
+    public void atualizar (Medalha  medAntiga , Medalha medNova) throws ElementoNaoAtualizavelException {
     
         
-        meda.atualizar(medAtualizada);
+        meda.atualizar(medAntiga, medNova);
         
     }
     

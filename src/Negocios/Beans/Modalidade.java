@@ -16,30 +16,12 @@ public enum Modalidade {
 
     Modalidade(String nome) {
 
-        this.nomeModalidade = nomeModalidade;
+        this.nomeModalidade = nome;
 
     }
 
     public String getNomeModalidade() {
         return nomeModalidade;
     }
-/*
-    @Override
-    public boolean equals(Object obj){
 
-        boolean resultado = false;
-
-        if(obj instanceof Modalidade) {
-
-            Modalidade m = (Modalidade) obj;
-            if (this.nomeModalidade.equals(m.getNomeModalidade())) {
-
-                resultado = true;
-            }
-
-        }
-        return resultado;
-
-    }
-*/
 }

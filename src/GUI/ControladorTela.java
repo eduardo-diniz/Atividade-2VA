@@ -33,6 +33,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
+/**
+ *
+ * @author Eduardo
+ */
 public class ControladorTela implements EventHandler<Event> {
 
     @FXML
@@ -43,8 +47,6 @@ public class ControladorTela implements EventHandler<Event> {
 
     @FXML
     private Button btnAtt;
-
-    Controlador c = new Controlador();
 
     @FXML
     private TableColumn<Medalha, Pais> pais;
@@ -81,13 +83,17 @@ public class ControladorTela implements EventHandler<Event> {
 
     @FXML
     private Text nBronze;
-    
-     @FXML
+
+    @FXML
     private ComboBox<TipoDeMedalhas> boxTipo;
-     
-     
+
     @FXML
     private ImageView corMedalha;
+
+    @FXML
+    private Text Ranking;
+
+    Controlador c = new Controlador();
 
     ObservableList<Medalha> m = FXCollections.observableArrayList();
 
@@ -117,21 +123,16 @@ public class ControladorTela implements EventHandler<Event> {
     @Override
     public void handle(Event event) {
 
-        System.out.println("Funcionando o Handle");
         if (event.getSource().equals(btnAdd)) {
-            System.out.println("Funcionando o botão adcionar ");
 
             try {
-                //Tentando imprimir a tabela na GUI
-                //System.out.println(boxTipo.getValue(). + boxMod.getValue().toString() + boxPais.getValue().toString());
 
                 c.inserir(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
 
-                System.out.println("Funcionando inserção de medalhas");
-                //tblClass.setItems((ObservableList<Medalha>) new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
                 tblClass.setItems(FXCollections.observableList(c.Listar()));
 
-                // System.out.println(boxMod.getItems());
+                c.atualizarRanking();
+
             } catch (ElementoJaExisteException e) {
 
                 Alert a1 = new Alert(Alert.AlertType.ERROR);
@@ -150,6 +151,8 @@ public class ControladorTela implements EventHandler<Event> {
 
                 tblClass.setItems(FXCollections.observableList(c.Listar()));
 
+                c.atualizarRanking();
+
             } catch (ElementoNaoExisteException mm) {
                 Alert a2 = new Alert(Alert.AlertType.ERROR);
 
@@ -163,25 +166,31 @@ public class ControladorTela implements EventHandler<Event> {
         if (event.getSource().equals(btnAtt)) {
 
             try {
-                c.atualizar(new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue()));
+                Medalha medNova = new Medalha(boxMod.getValue(), boxPais.getValue(), boxTipo.getValue());
+                Medalha medAntiga = tblClass.getSelectionModel().getSelectedItem();
+                c.atualizar(medAntiga, medNova);
                 tblClass.refresh();
-                // tblClass.setItems(FXCollections.observableList(c.Listar()));
+
+                c.atualizarRanking();
 
             } catch (ElementoNaoAtualizavelException ex) {
 
                 Alert a3 = new Alert(Alert.AlertType.ERROR);
 
                 a3.setTitle("Erro");
-                a3.setHeaderText("Medalha Não Removida");
+                a3.setHeaderText("Medalha Não atualizada");
                 a3.setContentText("A Medalha que vc tentou atualizar não existe");
                 a3.showAndWait();
             }
+
         }
 
         if (event.getSource().equals(btnLMod)) {
 
             c.ordenarModalidade();
             tblClass.refresh();
+
+            c.atualizarRanking();
 
         }
         if (event.getSource().equals(btnLPaises)) {
@@ -190,24 +199,34 @@ public class ControladorTela implements EventHandler<Event> {
 
             tblClass.refresh();
 
+            c.atualizarRanking();
+
         }
         if (event.getSource().equals(boxPais2)) {
             if (boxPais2.getSelectionModel().getSelectedItem() != null) {
                 int ouro = c.contatorMedalhas(boxPais2.getSelectionModel().getSelectedItem(), TipoDeMedalhas.OURO);
-                nOuro.setText("Ouro" + ouro);
+                nOuro.setText(" " + ouro);
                 int prata = c.contatorMedalhas(boxPais2.getSelectionModel().getSelectedItem(), TipoDeMedalhas.PRATA);
-                nPrata.setText("Prata" + prata);
+                nPrata.setText(" " + prata);
                 int bronze = c.contatorMedalhas(boxPais2.getSelectionModel().getSelectedItem(), TipoDeMedalhas.BRONZE);
-                nBronze.setText("Bronze" + bronze);
+                nBronze.setText(" " + bronze);
+
+                c.atualizarRanking();
+
+                c.ranking(boxPais2.getSelectionModel().getSelectedItem());
+
+                Ranking.setText(" " + c.ranking(boxPais2.getSelectionModel().getSelectedItem()));
+
             }
 
-        } if (event.getSource().equals(boxMod)){
-            if (boxMod.getSelectionModel().getSelectedItem() !=null){
-                
-                corMedalha.setImage(new Image (New    "ouro.png"));
-                
+        }
+        if (event.getSource().equals(boxMod)) {
+            if (boxPais.getSelectionModel().getSelectedItem() != null) {
+
+                corMedalha.setImage(new Image(getClass().getResourceAsStream("quadro de medalhas.jpg")));
+
             }
-            
+
         }
     }
 
